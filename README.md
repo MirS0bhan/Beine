@@ -28,8 +28,8 @@ Built with Godot Engine 4.5
 **[▶️ Play in Browser](https://Beine.ir)**
 
 **📦 Downloads:**
-- [Windows (x64)](https://github.com/Revisto/Bein/releases/latest/download/Bein-Windows.zip)
-- [Linux (x64)](https://github.com/Revisto/Bein/releases/latest/download/Bein-Linux.zip)
+- [Windows (x64)](https://github.com/Revisto/Bein/releases/latest/download/Beine.exe)
+- [Linux (x64)](https://github.com/Revisto/Bein/releases/latest/download/Beine.x86_64)
 
 *Or view all releases: [https://github.com/Revisto/Bein/releases](https://github.com/Revisto/Bein/releases)*
 
