@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://b80ax6w5v4tnn"]
+
+[ext_resource type="Script" path="res://scripts/level_complete_ui.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://ce87vyvdxanaq" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_font"]
+
+[node name="LevelCompleteUI" type="CanvasLayer"]
+process_mode = 3
+layer = 200
+script = ExtResource("1_script")
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.85)
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "LEVEL COMPLETE!"
+horizontal_alignment = 1
+
+[node name="LevelName" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Level Name"
+horizontal_alignment = 1
+
+[node name="Stars" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "3/3 stars"
+horizontal_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TimeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/Stats"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Time: 1:23"
+horizontal_alignment = 1
+
+[node name="CoinsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/Stats"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Coins: 10"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NextButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "NEXT LEVEL"
+
+[node name="RetryButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "RETRY"
+
+[node name="LevelSelectButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "LEVEL SELECT"
+
+[node name="MenuButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "MAIN MENU"
+

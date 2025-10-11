@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dinkqusbhcttd"]
+
+[ext_resource type="PackedScene" uid="uid://wj7wj1v8kfjn" path="res://scenes/background.tscn" id="1_background"]
+[ext_resource type="Script" uid="uid://bodb7aky50f85" path="res://scripts/backgrounds.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bam8qjtfqa5os" path="res://scenes/background_dark.tscn" id="9_7gny6"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+zoom = Vector2(4, 4)
+
+[node name="HeavenObjects" type="Node" parent="."]
+
+[node name="Background" parent="HeavenObjects" instance=ExtResource("1_background")]
+
+[node name="HellObjects" type="Node" parent="."]
+
+[node name="Background" parent="HellObjects" instance=ExtResource("9_7gny6")]
+visible = false

@@ -1,0 +1,73 @@
+# Godot 4+ specific ignores
+.godot/
+*.import
+*.translation
+
+# Godot-specific
+*.godot
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# System/tool-specific ignores
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]uild/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*~
+
+# Documentation (optional - remove if you want to track docs)
+*.md.backup
+
+# Local user data (save files, settings)
+# Uncomment if you don't want to track user data
+# user://
+# *.save
+# *.sav
+
+# Android specific
+*.apk
+*.ap_
+*.aab
+
+# Addons (uncomment to ignore third-party addons)
+# addons/
+
+# Ignore test scenes (optional)
+# test/
+# testing/
+# debug/

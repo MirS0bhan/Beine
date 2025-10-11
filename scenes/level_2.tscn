@@ -1,0 +1,466 @@
+[gd_scene load_steps=35 format=4 uid="uid://cuv4vme4rwno0"]
+
+[ext_resource type="PackedScene" uid="uid://wj7wj1v8kfjn" path="res://scenes/background.tscn" id="1_background"]
+[ext_resource type="Script" uid="uid://dxuf40asaxghr" path="res://scripts/game_manager.gd" id="1_l4ihi"]
+[ext_resource type="Script" uid="uid://dp588tn5r06xy" path="res://scripts/level_2_manager.gd" id="1_level_mgr"]
+[ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
+[ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_nlliu"]
+[ext_resource type="PackedScene" uid="uid://pqp5qaw561fr" path="res://scenes/coin.tscn" id="4_28cek"]
+[ext_resource type="PackedScene" path="res://scenes/hell_coin.tscn" id="4_hell_coin"]
+[ext_resource type="PackedScene" uid="uid://dtrbka1ef726o" path="res://scenes/killzone.tscn" id="5_x8euu"]
+[ext_resource type="PackedScene" uid="uid://d2w2i5h0lhc6l" path="res://scenes/mushroom.tscn" id="6_l0s6b"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="7_8cblx"]
+[ext_resource type="Texture2D" uid="uid://1rcv37h8luvf" path="res://assets/sprites/good_tileset.png" id="8_7nomh"]
+[ext_resource type="PackedScene" uid="uid://c4v5qw7x8bnnn" path="res://scenes/goal.tscn" id="8_goal"]
+[ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="9_2aecg"]
+[ext_resource type="PackedScene" uid="uid://bam8qjtfqa5os" path="res://scenes/background_dark.tscn" id="9_7gny6"]
+[ext_resource type="PackedScene" uid="uid://c7iak0l1m2nop" path="res://scenes/pause_menu.tscn" id="9_pause"]
+[ext_resource type="PackedScene" uid="uid://drhux6o4xcoc0" path="res://scenes/glitch_overlay.tscn" id="10_glitch"]
+[ext_resource type="Texture2D" uid="uid://b088fy6dxfou6" path="res://assets/sprites/dommed_tileset.png" id="11_7nomh"]
+
+[sub_resource type="Animation" id="Animation_1s4pk"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, -115)]
+}
+
+[sub_resource type="Animation" id="Animation_7nomh"]
+resource_name = "move"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(240, -115), Vector2(115, -115)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xuk5v"]
+_data = {
+&"RESET": SubResource("Animation_1s4pk"),
+&"move": SubResource("Animation_7nomh")
+}
+
+[sub_resource type="Animation" id="Animation_apgth"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 37)]
+}
+
+[sub_resource type="Animation" id="Animation_bm7kf"]
+resource_name = "move"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(120, 37), Vector2(230, 37)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_platform2"]
+_data = {
+&"RESET": SubResource("Animation_apgth"),
+&"move": SubResource("Animation_bm7kf")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1s4pk"]
+texture = ExtResource("8_7nomh")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x2xxo"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1s4pk")
+
+[sub_resource type="Animation" id="Animation_enemy2_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, -40)]
+}
+
+[sub_resource type="Animation" id="Animation_enemy2"]
+resource_name = "move"
+length = 1.2
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-266, 32), Vector2(-200, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enemy2"]
+_data = {
+&"RESET": SubResource("Animation_enemy2_reset"),
+&"move": SubResource("Animation_enemy2")
+}
+
+[sub_resource type="Animation" id="Animation_x2xxo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(263, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_enemy1"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(279, 32), Vector2(361, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enemy1"]
+_data = {
+&"RESET": SubResource("Animation_x2xxo"),
+&"move": SubResource("Animation_enemy1")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2xxo"]
+texture = ExtResource("11_7nomh")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2cbcq"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_x2xxo")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cn5tm"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("9_2aecg")]
+position = Vector2(240, -115)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform"]
+libraries = {
+&"": SubResource("AnimationLibrary_xuk5v")
+}
+autoplay = "move"
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("9_2aecg")]
+position = Vector2(120, 37)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_platform2")
+}
+autoplay = "move"
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_pause")]
+
+[node name="GlitchOverlay" parent="." instance=ExtResource("10_glitch")]
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("1_level_mgr")
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_l4ihi")
+
+[node name="WorldTimerLabel" type="Label" parent="GameManager"]
+offset_left = 73.0
+offset_top = -58.0
+offset_right = 263.0
+offset_bottom = -39.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_nlliu")
+theme_override_font_sizes/font_size = 8
+text = "World changes in: 5"
+
+[node name="TransitionOverlay" type="ColorRect" parent="GameManager"]
+offset_right = 1024.0
+offset_bottom = 600.0
+color = Color(1, 1, 1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameManager"]
+
+[node name="HeavenObjects" type="Node" parent="."]
+
+[node name="Coins" type="Node" parent="HeavenObjects"]
+
+[node name="Coin" parent="HeavenObjects/Coins" instance=ExtResource("4_28cek")]
+z_index = 10
+position = Vector2(296, 22)
+
+[node name="Coin2" parent="HeavenObjects/Coins" instance=ExtResource("4_28cek")]
+z_index = 10
+position = Vector2(408, -39)
+
+[node name="Coin3" parent="HeavenObjects/Coins" instance=ExtResource("4_28cek")]
+z_index = 10
+position = Vector2(296, -103)
+
+[node name="Coin4" parent="HeavenObjects/Coins" instance=ExtResource("4_28cek")]
+z_index = 10
+position = Vector2(24, -119)
+
+[node name="Coin5" parent="HeavenObjects/Coins" instance=ExtResource("4_28cek")]
+z_index = 10
+position = Vector2(-8, 72)
+
+[node name="Mid" type="TileMapLayer" parent="HeavenObjects"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAAEAAIAAAABAAEAAAAEAAMAAAADAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAADAAEAAAABAAUAAAACAAIAAAACAAUAAAACAAIAAAAAAAUAAAABAAAAAAAAAAQAAAABAAAAAAD//wUAAAABAAAAAAASAAIAAAAAAAEAAAATAAIAAAAAAAEAAAARAAMAAAACAAAAAAASAAMAAAAAAAAAAAATAAMAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAACAAIAAAAUAAMAAAACAAEAAAAUAAQAAAACAAEAAAASAAUAAAACAAIAAAATAAUAAAACAAIAAAAUAAUAAAACAAIAAAADAPv/AAACAAIAAAACAPv/AAACAAIAAAABAPv/AAACAAEAAAAAAPv/AAACAAIAAAADAPr/AAACAAEAAAACAPr/AAACAAEAAAACAPn/AAABAAAAAAABAPr/AAADAAEAAAABAPn/AAABAAAAAAAAAPj/AAABAAEAAAAAAPr/AAADAAEAAAAAAPn/AAACAAAAAAD///n/AAADAAAAAAD+//n/AAAEAAAAAAD///j/AAABAAEAAAD+//j/AAABAAEAAAD9//j/AAABAAEAAAD///r/AAACAAAAAAD9//X/AAAFAAAAAAD9//b/AAAFAAEAAAD9//f/AAAFAAIAAAD+//X/AAAGAAAAAAD+//b/AAAGAAEAAAD+//f/AAAGAAIAAAD///X/AAAHAAAAAAD///b/AAAHAAEAAAD///f/AAAHAAIAAAAXAAAAAAACAAIAAAAYAP//AAAAAAIAAAAYAAAAAAACAAIAAAAZAP//AAAAAAIAAAAWAAAAAAAAAAAAAAAXAP//AAAAAAAAAAAYAP7/AAAAAAAAAAAZAP7/AAAAAAAAAAASAPr/AAAAAAAAAAATAPr/AAAAAAAAAAAUAPr/AAAAAAAAAAAUAPv/AAACAAIAAAAVAPv/AAAAAAIAAAD//wYAAAACAAIAAAAAAAYAAAACAAIAAAABAAYAAAADAAEAAAACAAYAAAACAAIAAAADAAYAAAACAAIAAAADAAUAAAACAAIAAAAEAAUAAAADAAEAAAAEAAYAAAACAAIAAAAEAAQAAAACAAIAAAAEAAcAAAACAAIAAAAEAAgAAAACAAIAAAADAAcAAAADAAEAAAACAAcAAAACAAIAAAABAAcAAAACAAIAAAAAAAcAAAACAAIAAAD//wcAAAACAAIAAAD//wgAAAADAAEAAAAAAAgAAAACAAIAAAABAAgAAAACAAIAAAACAAgAAAACAAIAAAADAAgAAAACAAIAAAAEAAkAAAAEAAAAAAADAAkAAAAEAAAAAAACAAkAAAAEAAAAAAABAAkAAAAEAAAAAAAAAAkAAAAEAAAAAAD//wkAAAAEAAAAAAASAAYAAAACAAIAAAATAAYAAAACAAEAAAAUAAYAAAACAAIAAAAUAAcAAAACAAIAAAATAAcAAAACAAIAAAASAAcAAAACAAIAAAASAAgAAAACAAEAAAATAAgAAAACAAIAAAAUAAgAAAACAAEAAAAUAAkAAAACAAIAAAATAAkAAAACAAIAAAASAAkAAAACAAIAAAAYAAEAAAACAAIAAAAYAAIAAAACAAIAAAAXAAIAAAACAAIAAAAXAAEAAAACAAIAAAAZAAAAAAACAAIAAAAZAAEAAAACAAIAAAAZAAIAAAACAAIAAAASAPv/AAACAAIAAAATAPv/AAACAAEAAAASAPz/AAACAAIAAAATAPz/AAACAAIAAAADAPz/AAACAAIAAAACAPz/AAACAAEAAAABAPz/AAACAAIAAAAAAPz/AAACAAIAAAD///z/AAACAAEAAAD+//z/AAACAAIAAAD+//v/AAACAAIAAAD+//r/AAACAAIAAAD///v/AAACAAIAAAD9//n/AAACAAIAAAD9//r/AAACAAIAAADz/wIAAAAAAAAAAADy/wIAAAAAAAAAAADx/wIAAAAAAAEAAADw/wIAAAAAAAEAAADv/wIAAAAAAAEAAADv/wMAAAACAAIAAADw/wMAAAACAAIAAADx/wMAAAACAAIAAADy/wMAAAADAAEAAADz/wMAAAACAAAAAAD0/wMAAAAAAAAAAAAaAP7/AAAAAAAAAAAaAPv/AAAEAAIAAAAaAPz/AAAEAAMAAAAaAP3/AAAEAAQAAAD8//X/AAADAAIAAAD8//b/AAADAAMAAAD8//f/AAADAAQAAAD8//j/AAABAAIAAADz/wcAAAAEAAAAAADy/wcAAAAEAAAAAADx/wcAAAAEAAAAAADw/wcAAAAEAAAAAADv/wcAAAAEAAAAAADv/wYAAAACAAMAAADw/wYAAAADAAEAAADx/wYAAAACAAIAAADy/wYAAAACAAIAAADz/wYAAAACAAIAAADz/wUAAAACAAIAAADz/wQAAAACAAMAAADy/wUAAAADAAEAAADy/wQAAAACAAIAAADx/wQAAAACAAIAAADx/wUAAAACAAIAAADw/wUAAAACAAIAAADw/wQAAAACAAIAAADv/wQAAAADAAEAAADv/wUAAAACAAMAAADv/wEAAAABAAQAAAAUAAIAAAACAAQAAAA=")
+tile_set = SubResource("TileSet_x2xxo")
+collision_enabled = false
+
+[node name="Background" parent="HeavenObjects" instance=ExtResource("1_background")]
+
+[node name="HellObjects" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="HellObjects"]
+
+[node name="Enemy2" parent="HellObjects/Enemies" instance=ExtResource("6_l0s6b")]
+z_index = 10
+position = Vector2(80, -40)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HellObjects/Enemies/Enemy2"]
+root_node = NodePath("../../Enemy2")
+libraries = {
+&"": SubResource("AnimationLibrary_enemy2")
+}
+autoplay = "move"
+
+[node name="Enemy" parent="HellObjects/Enemies" instance=ExtResource("6_l0s6b")]
+z_index = 10
+position = Vector2(263, 48)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HellObjects/Enemies/Enemy"]
+libraries = {
+&"": SubResource("AnimationLibrary_enemy1")
+}
+autoplay = "move"
+
+[node name="Coins" type="Node" parent="HellObjects"]
+
+[node name="HellCoin1" parent="HellObjects/Coins" instance=ExtResource("4_hell_coin")]
+z_index = 10
+position = Vector2(-56, 25)
+
+[node name="HellCoin2" parent="HellObjects/Coins" instance=ExtResource("4_hell_coin")]
+z_index = 10
+position = Vector2(-136, 25)
+
+[node name="HellCoin3" parent="HellObjects/Coins" instance=ExtResource("4_hell_coin")]
+z_index = 10
+position = Vector2(-328, -55)
+
+[node name="HellCoin4" parent="HellObjects/Coins" instance=ExtResource("4_hell_coin")]
+z_index = 10
+position = Vector2(-136, -71)
+
+[node name="HellCoin5" parent="HellObjects/Coins" instance=ExtResource("4_hell_coin")]
+z_index = 10
+position = Vector2(-88, -118)
+
+[node name="Mid" type="TileMapLayer" parent="HellObjects"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAABAAMAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAAEAAIAAAAEAAAAAAAAAAQAAAAEAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAD//wUAAAAAAAAAAAADAAQAAAAEAAAAAAAEAAUAAAAEAAAAAAADAAcAAAAEAAAAAAABAAYAAAAEAAAAAAD//wgAAAAEAAAAAAADAAgAAAABAAIAAAACAAgAAAABAAIAAAABAAgAAAAEAAAAAAAAAAgAAAABAAIAAAAAAAcAAAABAAIAAAABAAcAAAABAAIAAAACAAcAAAABAAIAAAAEAAYAAAAAAAIAAAADAAYAAAAAAAIAAAACAAYAAAAAAAIAAAACAAUAAAAAAAIAAAADAAUAAAAAAAIAAAABAAUAAAAAAAIAAAAEAAQAAAAAAAIAAAD//wcAAAAAAAIAAAD//wYAAAAAAAIAAAAAAAYAAAAAAAIAAAAEAAMAAAAEAAEAAAADAAkAAAAAAAMAAAACAAkAAAAAAAMAAAABAAkAAAAAAAMAAAAAAAkAAAAAAAMAAAD//wkAAAAAAAMAAAAEAAcAAAADAAEAAAAWAAAAAAADAAAAAAAXAP//AAADAAAAAAAZAP//AAADAAAAAAAZAP7/AAADAAAAAAAZAAEAAAAEAAEAAAAXAAIAAAAEAAEAAAAXAAAAAAAEAAAAAAAZAAAAAAAEAAAAAAAZAAIAAAACAAEAAAAXAAEAAAABAAMAAAATAPr/AAABAAAAAAATAPz/AAACAAEAAAATAPv/AAAEAAAAAAAUAPv/AAAEAAAAAAABAPn/AAAEAAAAAAACAPn/AAAEAAAAAAADAPr/AAAEAAAAAAAAAPj/AAACAAAAAAD///j/AAACAAAAAAD+//j/AAACAAAAAAD9//j/AAACAAAAAAD+//n/AAAAAAIAAAD9//n/AAAAAAMAAAD9//r/AAAAAAMAAAD+//r/AAAAAAMAAAD+//v/AAABAAMAAAD///v/AAABAAMAAAAAAPr/AAABAAMAAAAAAPn/AAAEAAEAAAD///r/AAAEAAEAAAACAPz/AAADAAIAAAABAPv/AAACAAMAAAD+//z/AAACAAIAAAADAPz/AAACAAQAAAADAPv/AAAGAAEAAAABAPz/AAAFAAIAAAACAPv/AAADAAEAAAAAAPv/AAADAAEAAAAAAPz/AAADAAEAAAACAPr/AAADAAEAAAABAPr/AAABAAIAAAD///z/AAABAAIAAAD///n/AAABAAIAAAD9//X/AAAFAAAAAAD9//b/AAAFAAEAAAD9//f/AAAFAAIAAAD+//X/AAAGAAAAAAD+//b/AAAGAAEAAAD+//f/AAAGAAIAAAD///X/AAAHAAAAAAD///b/AAAHAAEAAAD///f/AAAHAAIAAADv/wIAAAAEAAAAAADw/wIAAAAEAAAAAADx/wIAAAAEAAAAAADy/wIAAAACAAAAAADz/wIAAAAEAAAAAADz/wMAAAAEAAAAAAD0/wMAAAAEAAAAAADv/wMAAAACAAAAAADx/wUAAAACAAAAAADz/wYAAAACAAAAAADx/wcAAAACAAAAAADv/wcAAAAEAAQAAADz/wQAAAACAAAAAADx/wQAAAAEAAEAAADz/wcAAAABAAIAAADy/wcAAAABAAIAAADy/wYAAAADAAIAAADy/wUAAAABAAIAAADz/wUAAAABAAIAAADw/wcAAAAAAAMAAADw/wYAAAAAAAMAAADx/wYAAAAAAAMAAADv/wYAAAAAAAMAAADw/wUAAAAAAAIAAADw/wQAAAAAAAIAAADw/wMAAAAAAAIAAADx/wMAAAAAAAIAAADy/wMAAAAAAAIAAADv/wUAAAACAAMAAADv/wQAAAADAAAAAADy/wQAAAADAAAAAAAaAPv/AAACAAIAAAAaAPz/AAACAAMAAAAaAP3/AAACAAQAAAAaAP7/AAADAAAAAAD7/wIAAAACAAAAAAD8/wIAAAACAAAAAAD7/wMAAAACAAMAAAD8/wQAAAAEAAMAAAD8/wMAAAAEAAEAAAD7/wQAAAAEAAEAAAD3/wIAAAAEAAAAAAD3/wMAAAABAAIAAAD3/wUAAAABAAIAAAD3/wQAAAAAAAQAAAD7/wUAAAABAAAAAAD8/wUAAAABAAAAAAD4//v/AAAEAAAAAAD6//r/AAAAAAQAAAD6//n/AAAEAAAAAAD8//j/AAAEAAAAAAD8//f/AAAEAAIAAAD8//b/AAAEAAMAAAD8//X/AAACAAIAAAD4//z/AAAEAAAAAAD3//z/AAAEAAAAAADz//3/AAAEAAAAAADy//3/AAAEAAAAAADt/wAAAAAEAAAAAADs/wAAAAACAAAAAADs////AAAAAAMAAADr//7/AAACAAAAAADs//7/AAACAAAAAADu/wEAAAACAAAAAADr//3/AAAEAAQAAADv//3/AAAEAAAAAADw//3/AAAEAAAAAADt/wEAAAABAAAAAADu/wIAAAADAAAAAAAUAPr/AAABAAAAAAAVAPv/AAAEAAAAAAASAAMAAAABAAAAAAASAAQAAAAEAAAAAAASAAUAAAAAAAIAAAASAAYAAAAAAAIAAAASAAcAAAABAAIAAAASAAgAAAABAAMAAAASAAkAAAADAAEAAAATAAIAAAABAAEAAAATAAMAAAABAAAAAAATAAQAAAAAAAIAAAATAAUAAAAAAAIAAAATAAYAAAAEAAAAAAATAAcAAAABAAIAAAATAAgAAAAAAAMAAAATAAkAAAADAAEAAAASAAIAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_2cbcq")
+collision_enabled = false
+
+[node name="Background" parent="HellObjects" instance=ExtResource("9_7gny6")]
+
+[node name="Player" parent="." instance=ExtResource("1_rbmkf")]
+position = Vector2(34, 45)
+collision_layer = 3
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -7)
+zoom = Vector2(4, 4)
+limit_bottom = 120
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Goal" parent="." instance=ExtResource("8_goal")]
+position = Vector2(-16, -144)
+
+[node name="Killzone" parent="." instance=ExtResource("5_x8euu")]
+position = Vector2(74, 141)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_cn5tm")
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+offset_left = 90.0
+offset_top = 51.0
+offset_right = 186.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.34902, 1)
+theme_override_fonts/font = ExtResource("7_8cblx")
+theme_override_font_sizes/font_size = 8
+text = "More Than
+One Path"
+
+[node name="Label2" type="Label" parent="Labels"]
+offset_left = 422.0
+offset_top = -10.0
+offset_right = 518.0
+offset_bottom = 9.0
+theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.34902, 1)
+theme_override_fonts/font = ExtResource("7_8cblx")
+theme_override_font_sizes/font_size = 8
+text = "Time Matters...
+Reach to the End
+Before All Blocks Disappear!"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bam8qjtfqa5os"]
+
+[ext_resource type="Texture2D" uid="uid://bcsle2hrkmnrh" path="res://assets/backgrounds/background_dark.png" id="1_4y7ty"]
+
+[node name="Background" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="TopColor" type="ColorRect" parent="ParallaxLayer"]
+z_index = -100
+offset_left = -2000.0
+offset_top = -1920.0
+offset_right = 4000.0
+offset_bottom = 436.0
+color = Color(0.015686275, 0, 0.101960786, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, 450)
+scale = Vector2(5, 5)
+texture = ExtResource("1_4y7ty")
+centered = false
+offset = Vector2(0, -200)
+
+[node name="BottomColor" type="ColorRect" parent="ParallaxLayer"]
+z_index = -100
+offset_left = -2000.0
+offset_top = 420.0
+offset_right = 4000.0
+offset_bottom = 1724.0
+color = Color(0.4627451, 0.05882353, 0.3254902, 1)

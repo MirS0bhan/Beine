@@ -1,0 +1,18 @@
+# Enable CORS for Godot WebAssembly files
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# Set correct MIME types for Godot files
+AddType application/octet-stream .pck
+AddType application/wasm .wasm
+AddType application/javascript .js
+
+# Enable compression for better loading
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/wasm
+    AddOutputFilterByType DEFLATE application/octet-stream
+</IfModule>

@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7h8kak0l1mnn"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://ce87vyvdxanaq" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_font"]
+[ext_resource type="PackedScene" uid="uid://bckground5witch" path="res://scenes/backgrounds.tscn" id="3_backgrounds"]
+
+[node name="LevelSelect" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Backgrounds" parent="." instance=ExtResource("3_backgrounds")]
+
+[node name="SelectOverlay" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Overlay" type="ColorRect" parent="SelectOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectOverlay/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Header" type="HBoxContainer" parent="SelectOverlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="SelectOverlay/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "BACK"
+
+[node name="Spacer" type="Control" parent="SelectOverlay/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatsLabel" type="Label" parent="SelectOverlay/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Total Stars: 0/30"
+
+[node name="Title" type="Label" parent="SelectOverlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = "SELECT LEVEL"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SelectOverlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="SelectOverlay/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LevelGrid" type="GridContainer" parent="SelectOverlay/MarginContainer/VBoxContainer/ScrollContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
