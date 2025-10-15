@@ -33,6 +33,11 @@ Built with Godot Engine 4.5
 
 *Or view all releases: [https://github.com/Revisto/Bein/releases](https://github.com/Revisto/Bein/releases)*
 
+## License
+This project is licensed under the AGPL.
+
+All asset licensing and credits are described [here](/assets/COPYING.md).
+
 ## Screenshots
 ![](./screenshots/1.png)
 ![](./screenshots/2.png)
